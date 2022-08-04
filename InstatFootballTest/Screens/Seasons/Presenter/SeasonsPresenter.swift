@@ -10,6 +10,8 @@ import Foundation
 protocol SeasonsPresenterProtocol {
     var view: SeasonsViewProtocol? { get set }
     var numberOfRows: Int { get }
+    var seasonsNames: [String] { get }
+    
     func viewLoaded()
     func model(for indexPath: IndexPath) -> SeasonModel
 }
@@ -23,6 +25,10 @@ final class SeasonsPresenter: SeasonsPresenterProtocol {
     
     var numberOfRows: Int {
         seasons.count
+    }
+    
+    var seasonsNames: [String] {
+        seasons.map { "\($0.year)" }
     }
     
     init(service: FootballServiceProtocol, leagueId: String) {

@@ -11,6 +11,7 @@ protocol LeagueStandingViewProtocol: AnyObject {
     func updateView()
     func updateView(isLoading: Bool)
     func updateView(withError error: Error)
+    func updateModelView(with isHidden: Bool)
 }
 
 final class LeagueStandingViewController: UIViewController {
@@ -20,7 +21,7 @@ final class LeagueStandingViewController: UIViewController {
         return loader
     }()
     
-    private lazy var tableView: UITableView = {
+    private lazy var mainTableView: UITableView = {
         let tableView = UITableView(frame: view.bounds)
         tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         tableView.dataSource = self
@@ -30,10 +31,23 @@ final class LeagueStandingViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var modalView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        view.backgroundColor = .lightGray.withAlphaComponent(0.7)
+        view.layer.cornerRadius = 8
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let modalMenuViewController: ModalMenuViewController
+    private var modalViewHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
     private let presenter: LeagueStandingPresenterProtocol
     
     init(presenter: LeagueStandingPresenterProtocol, title: String) {
         self.presenter = presenter
+        self.modalMenuViewController = ModalMenuViewController(items: presenter.seasons)
         
         super.init(nibName: nil, bundle: nil)
         self.title = title
@@ -48,18 +62,59 @@ final class LeagueStandingViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        addRightButton()
+        addModalView()
         presenter.viewLoaded()
     }
     
     private func setupView() {
-        view.addSubview(tableView)
+        view.addSubview(mainTableView)
         view.addSubview(loader)
+        view.addSubview(modalView)
+        
+        modalViewHeightConstraint = modalView.heightAnchor.constraint(equalToConstant: 0)
+        NSLayoutConstraint.activate([
+            modalViewHeightConstraint,
+            modalView.widthAnchor.constraint(equalToConstant: 100),
+            modalView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2),
+            modalView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
+    }
+    
+    private func addModalView() {
+        addChild(modalMenuViewController)
+        guard let childView = modalMenuViewController.view else { return }
+        childView.translatesAutoresizingMaskIntoConstraints = false
+        modalView.addSubview(childView)
+        NSLayoutConstraint.activate([
+            childView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor),
+            childView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor),
+            childView.topAnchor.constraint(equalTo: modalView.topAnchor),
+            childView.bottomAnchor.constraint(equalTo: modalView.bottomAnchor)
+        ])
+        
+        modalMenuViewController.didMove(toParent: self)
+        modalMenuViewController.action = { [weak self] item in
+            self?.presenter.updateSeason(with: item)
+        }
+    }
+    
+    private func addRightButton() {
+        let barItem = UIBarButtonItem(title: "Seasons",
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(tapSeasonsButton))
+        navigationItem.rightBarButtonItem = barItem
+    }
+    
+    @objc private func tapSeasonsButton() {
+        presenter.seasonsButtonTapped()
     }
 }
 
 extension LeagueStandingViewController: LeagueStandingViewProtocol {
     func updateView() {
-        tableView.reloadData()
+        mainTableView.reloadData()
     }
     
     func updateView(isLoading: Bool) {
@@ -76,8 +131,16 @@ extension LeagueStandingViewController: LeagueStandingViewProtocol {
             self?.presenter.viewLoaded()
         }
     }
+    
+    func updateModelView(with isHidden: Bool) {
+        modalViewHeightConstraint.constant = isHidden ? 0 : 300
+        mainTableView.isUserInteractionEnabled = isHidden
+        UIView.animate(withDuration: 0.3) {
+            self.modalView.isHidden = isHidden
+            self.view.layoutIfNeeded()
+        }
+    }
 }
-
 
 extension LeagueStandingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,4 +153,3 @@ extension LeagueStandingViewController: UITableViewDataSource, UITableViewDelega
         return cell
     }
 }
-

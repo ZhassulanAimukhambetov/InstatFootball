@@ -10,6 +10,7 @@ import Foundation
 protocol LeaguesPresenterProtocol {
     var view: LeaguesViewProtocol? { get set }
     var numberOfRows: Int { get }
+    
     func viewLoaded()
     func model(for indexPath: IndexPath) -> LeagueModel
 }

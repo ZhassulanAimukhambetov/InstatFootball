@@ -91,7 +91,7 @@ extension SeasonsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = MainFactory.leagueStandingVC(for: presenter.model(for: indexPath))
+        let vc = MainFactory.leagueStandingVC(for: presenter.model(for: indexPath), seasons: presenter.seasonsNames)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

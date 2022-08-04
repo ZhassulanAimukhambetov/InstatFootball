@@ -35,6 +35,7 @@
 		C4E63923289BF052008F8334 /* LeagueStandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E63922289BF052008F8334 /* LeagueStandingModel.swift */; };
 		C4E63926289BF109008F8334 /* LeagueStandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E63925289BF109008F8334 /* LeagueStandingCell.swift */; };
 		C4E63929289C08EF008F8334 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E63928289C08EF008F8334 /* StatView.swift */; };
+		C4E6392C289C19E2008F8334 /* ModalMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6392B289C19E2008F8334 /* ModalMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		C4E63922289BF052008F8334 /* LeagueStandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueStandingModel.swift; sourceTree = "<group>"; };
 		C4E63925289BF109008F8334 /* LeagueStandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueStandingCell.swift; sourceTree = "<group>"; };
 		C4E63928289C08EF008F8334 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		C4E6392B289C19E2008F8334 /* ModalMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 		C41C727B289BB3B900E4D1CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C4E6392A289C19CA008F8334 /* ModalMenuView */,
 				C41C727E289BD9C500E4D1CE /* LeagueStandingViewController.swift */,
 				C4E63927289C08DB008F8334 /* StatView */,
 				C4E63924289BF09C008F8334 /* Cell */,
@@ -331,6 +334,14 @@
 				C4E63928289C08EF008F8334 /* StatView.swift */,
 			);
 			path = StatView;
+			sourceTree = "<group>";
+		};
+		C4E6392A289C19CA008F8334 /* ModalMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				C4E6392B289C19E2008F8334 /* ModalMenuView.swift */,
+			);
+			path = ModalMenuView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +417,7 @@
 				C41C726C289B742F00E4D1CE /* SeasonsViewController.swift in Sources */,
 				C41C7277289B96B300E4D1CE /* SeasonCell.swift in Sources */,
 				C41C7245289AFFD800E4D1CE /* NetworkError.swift in Sources */,
+				C4E6392C289C19E2008F8334 /* ModalMenuView.swift in Sources */,
 				C41C7252289B05CA00E4D1CE /* LeaguesResponse.swift in Sources */,
 				C41C7272289B92EE00E4D1CE /* SeasonModel.swift in Sources */,
 				C41C726F289B92BA00E4D1CE /* SeasonsPresenter.swift in Sources */,
