@@ -5,7 +5,6 @@
 //  Created by Zhassulan Aimukhambetov on 04.08.2022.
 //
 
-import Foundation
 import UIKit
 
 final class SeasonCell: UITableViewCell {
@@ -62,6 +61,11 @@ final class SeasonCell: UITableViewCell {
         contentView.addSubview(dateLabel)
         contentView.addSubview(nameLabel)
         
+        let separator = UIView()
+        separator.backgroundColor = .darkGray
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(separator)
+        
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -72,7 +76,12 @@ final class SeasonCell: UITableViewCell {
 
             yearLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             yearLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            yearLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8)
+            yearLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
+            
+            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+            separator.heightAnchor.constraint(equalToConstant: 1),
+            separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }

@@ -107,6 +107,7 @@
 				C41C7264289B696500E4D1CE /* Factory */,
 				C41C7238289AFE4C00E4D1CE /* Leagues */,
 				C41C7269289B740C00E4D1CE /* Seasons */,
+				C41C727A289BB36600E4D1CE /* LeagueStanding */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -115,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				C41C7239289AFE9800E4D1CE /* Model */,
-				C41C723A289AFEA100E4D1CE /* View */,
 				C41C723B289AFEA600E4D1CE /* Presenter */,
+				C41C723A289AFEA100E4D1CE /* View */,
 			);
 			path = Leagues;
 			sourceTree = "<group>";
@@ -169,19 +170,19 @@
 			children = (
 				C41C725F289B1CE600E4D1CE /* ImageDownloader */,
 				C41C724B289B03EA00E4D1CE /* FootballService */,
-				C41C723F289AFF2500E4D1CE /* Network */,
+				C41C723F289AFF2500E4D1CE /* NetworkService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		C41C723F289AFF2500E4D1CE /* Network */ = {
+		C41C723F289AFF2500E4D1CE /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				C41C7242289AFFB500E4D1CE /* NetworkRouter.swift */,
 				C41C7244289AFFD800E4D1CE /* NetworkError.swift */,
 				C41C7246289B002800E4D1CE /* NetworkService.swift */,
 			);
-			path = Network;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		C41C724B289B03EA00E4D1CE /* FootballService */ = {
@@ -279,6 +280,37 @@
 				C41C7278289BA58700E4D1CE /* View.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C41C727A289BB36600E4D1CE /* LeagueStanding */ = {
+			isa = PBXGroup;
+			children = (
+				C41C727D289BB3C700E4D1CE /* Model */,
+				C41C727C289BB3C100E4D1CE /* Presenter */,
+				C41C727B289BB3B900E4D1CE /* View */,
+			);
+			path = LeagueStanding;
+			sourceTree = "<group>";
+		};
+		C41C727B289BB3B900E4D1CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C41C727C289BB3C100E4D1CE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C41C727D289BB3C700E4D1CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
