@@ -8,6 +8,10 @@
 struct LeagueModel {
     let league: League
     
+    var id: String {
+        league.id
+    }
+    
     var nameText: String {
         league.name
     }
@@ -19,6 +23,4 @@ struct LeagueModel {
     var logoURL: String? {
         league.logos.light
     }
-    
-    
 }

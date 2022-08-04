@@ -7,15 +7,16 @@
 
 import Foundation
 
-protocol LeaguesPresenter {
+protocol LeaguesPresenterProtocol {
+    var view: LeaguesViewProtocol? { get set }
     var numberOfRows: Int { get }
     func viewLoaded()
     func model(for indexPath: IndexPath) -> LeagueModel
 }
 
-final class LeaguesPresenterImpl: LeaguesPresenter {
-    private let service: FootballService
-    weak var view: LeaguesView?
+final class LeaguesPresenter: LeaguesPresenterProtocol {
+    private let service: FootballServiceProtocol
+    weak var view: LeaguesViewProtocol?
     
     private var leagues: [League] = []
     
@@ -23,7 +24,7 @@ final class LeaguesPresenterImpl: LeaguesPresenter {
         leagues.count
     }
     
-    init(service: FootballService) {
+    init(service: FootballServiceProtocol) {
         self.service = service
     }
     

@@ -74,15 +74,3 @@ final class LeagueCell: UITableViewCell {
         ])
     }
 }
-
-extension UIImageView {
-    private var imageDownloader: ImageDownloader {
-        ImageDownloader.shared
-    }
-    
-    func setImage(for url: String?, with placeHolder: UIImage? = nil) {
-        imageDownloader.downloadImage(with: url, completionHandler: { image in
-            self.image = image
-        }, placeholderImage: placeHolder)
-    }
-}

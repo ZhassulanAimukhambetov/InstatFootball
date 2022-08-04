@@ -7,7 +7,7 @@
 
 enum FootballRouter: NetworkRouter {
     case leagues
-    case seasons
+    case seasons(leagueId: String)
     case detailSeason
     
     var baseUrl: String {
@@ -18,8 +18,8 @@ enum FootballRouter: NetworkRouter {
         switch self {
         case .leagues:
             return "/leagues"
-        case .seasons:
-            return ""
+        case .seasons(let id):
+            return "/leagues/\(id)/seasons"
         case .detailSeason:
             return ""
         }

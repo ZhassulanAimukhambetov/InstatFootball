@@ -1,5 +1,5 @@
 //
-//  LeaguesViewController.swift
+//  SeasonsViewController.swift
 //  InstatFootballTest
 //
 //  Created by Zhassulan Aimukhambetov on 04.08.2022.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol LeaguesViewProtocol: AnyObject {
+protocol SeasonsViewProtocol: AnyObject {
     func updateView()
     func updateView(isLoading: Bool)
     func updateView(withError error: Error)
 }
 
-final class LeaguesViewController: UIViewController {
+final class SeasonsViewController: UIViewController {
     private lazy var loader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView(style: .large)
         loader.center = view.center
@@ -26,13 +26,13 @@ final class LeaguesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.register(LeagueCell.self)
+        tableView.register(SeasonCell.self)
         return tableView
     }()
     
-    private let presenter: LeaguesPresenterProtocol
+    private let presenter: SeasonsPresenterProtocol
     
-    init(presenter: LeaguesPresenterProtocol) {
+    init(presenter: SeasonsPresenterProtocol) {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
@@ -57,7 +57,7 @@ final class LeaguesViewController: UIViewController {
     }
 }
 
-extension LeaguesViewController: LeaguesViewProtocol {
+extension SeasonsViewController: SeasonsViewProtocol {
     func updateView() {
         tableView.reloadData()
     }
@@ -79,20 +79,18 @@ extension LeaguesViewController: LeaguesViewProtocol {
 }
 
 
-extension LeaguesViewController: UITableViewDataSource, UITableViewDelegate {
+extension SeasonsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LeagueCell = tableView.dequeueCell(for: indexPath)
+        let cell: SeasonCell = tableView.dequeueCell(for: indexPath)
         cell.configure(with: presenter.model(for: indexPath))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let leagueId = presenter.model(for: indexPath).id
-        let vc = MainFactory.seasonsVC(for: leagueId)
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
