@@ -7,6 +7,8 @@
 
 import UIKit
 
+// Используем минимальный фактори для инъекции зависимостей.
+// Тут легко подменить реализацию сервисов, или замокать.
 enum MainFactory {
     private static var client: NetworkService {
         Network()

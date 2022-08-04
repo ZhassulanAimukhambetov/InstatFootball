@@ -294,9 +294,9 @@
 		C41C727B289BB3B900E4D1CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C41C727E289BD9C500E4D1CE /* LeagueStandingViewController.swift */,
 				C4E63927289C08DB008F8334 /* StatView */,
 				C4E63924289BF09C008F8334 /* Cell */,
-				C41C727E289BD9C500E4D1CE /* LeagueStandingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
