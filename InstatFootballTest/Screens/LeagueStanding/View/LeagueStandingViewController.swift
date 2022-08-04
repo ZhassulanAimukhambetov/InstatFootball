@@ -134,7 +134,6 @@ extension LeagueStandingViewController: LeagueStandingViewProtocol {
     
     func updateModelView(with isHidden: Bool) {
         modalViewHeightConstraint.constant = isHidden ? 0 : 300
-        mainTableView.isUserInteractionEnabled = isHidden
         UIView.animate(withDuration: 0.3) {
             self.modalView.isHidden = isHidden
             self.view.layoutIfNeeded()
@@ -151,5 +150,17 @@ extension LeagueStandingViewController: UITableViewDataSource, UITableViewDelega
         let cell: LeagueStandingCell = tableView.dequeueCell(for: indexPath)
         cell.configure(with: presenter.model(for: indexPath))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !modalView.isHidden {
+            presenter.seasonsButtonTapped()
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !modalView.isHidden {
+            presenter.seasonsButtonTapped()
+        }
     }
 }
