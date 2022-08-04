@@ -78,7 +78,6 @@ extension LeaguesViewController: LeaguesViewProtocol {
     }
 }
 
-
 extension LeaguesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.numberOfRows
@@ -91,8 +90,7 @@ extension LeaguesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let leagueId = presenter.model(for: indexPath).id
-        let vc = MainFactory.seasonsVC(for: leagueId)
+        let vc = MainFactory.seasonsVC(for: presenter.model(for: indexPath))
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -32,10 +32,11 @@ final class SeasonsViewController: UIViewController {
     
     private let presenter: SeasonsPresenterProtocol
     
-    init(presenter: SeasonsPresenterProtocol) {
+    init(presenter: SeasonsPresenterProtocol, title: String) {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
+        self.title = title
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +54,6 @@ final class SeasonsViewController: UIViewController {
     private func setupView() {
         view.addSubview(tableView)
         view.addSubview(loader)
-        title = "Leagues"
     }
 }
 

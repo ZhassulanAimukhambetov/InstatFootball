@@ -53,6 +53,7 @@ final class LeagueCell: UITableViewCell {
     }
     
     private func setupView() {
+        selectionStyle = .none
         contentView.addSubview(logoImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(abbrLabel)

@@ -30,6 +30,7 @@
 		C41C7272289B92EE00E4D1CE /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C7271289B92EE00E4D1CE /* SeasonModel.swift */; };
 		C41C7274289B93BD00E4D1CE /* SeasonsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C7273289B93BD00E4D1CE /* SeasonsResponse.swift */; };
 		C41C7277289B96B300E4D1CE /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C7276289B96B300E4D1CE /* SeasonCell.swift */; };
+		C41C7279289BA58700E4D1CE /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41C7278289BA58700E4D1CE /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		C41C7271289B92EE00E4D1CE /* SeasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModel.swift; sourceTree = "<group>"; };
 		C41C7273289B93BD00E4D1CE /* SeasonsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsResponse.swift; sourceTree = "<group>"; };
 		C41C7276289B96B300E4D1CE /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
+		C41C7278289BA58700E4D1CE /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,8 +250,8 @@
 		C41C726A289B742000E4D1CE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C41C7275289B96AA00E4D1CE /* Cell */,
 				C41C726B289B742F00E4D1CE /* SeasonsViewController.swift */,
+				C41C7275289B96AA00E4D1CE /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				C41C7276289B96B300E4D1CE /* SeasonCell.swift */,
+				C41C7278289BA58700E4D1CE /* View.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41C7230289AFBAA00E4D1CE /* LaunchScreen.storyboard in Resources */,
+				C41C7279289BA58700E4D1CE /* View.xib in Resources */,
 				C41C722D289AFBAA00E4D1CE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

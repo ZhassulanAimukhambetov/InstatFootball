@@ -24,9 +24,9 @@ enum MainFactory {
         return view
     }
     
-    static func seasonsVC(for leagueId: String) -> UIViewController {
-        let presenter = SeasonsPresenter(service: footbalService, leagueId: leagueId)
-        let view = SeasonsViewController(presenter: presenter)
+    static func seasonsVC(for league: LeagueModel) -> UIViewController {
+        let presenter = SeasonsPresenter(service: footbalService, leagueId: league.id)
+        let view = SeasonsViewController(presenter: presenter, title: league.abbrText)
         presenter.view = view
         
         return view
