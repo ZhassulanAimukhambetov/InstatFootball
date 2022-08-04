@@ -8,7 +8,7 @@
 enum FootballRouter: NetworkRouter {
     case leagues
     case seasons(leagueId: String)
-    case detailSeason
+    case leagueStanding(leagueId: String, season: String)
     
     var baseUrl: String {
         "https://api-football-standings.azharimm.site"
@@ -20,8 +20,8 @@ enum FootballRouter: NetworkRouter {
             return "/leagues"
         case .seasons(let id):
             return "/leagues/\(id)/seasons"
-        case .detailSeason:
-            return ""
+        case .leagueStanding(let id, _):
+            return "/leagues/\(id)/standings"
         }
     }
     
@@ -29,8 +29,10 @@ enum FootballRouter: NetworkRouter {
     
     var parameters: Parameters {
         switch self {
-        case .leagues, .seasons, .detailSeason:
+        case .leagues, .seasons:
             return [:]
+        case .leagueStanding(_, let season):
+            return ["season": season, "sort": "asc"]
         }
     }
 }

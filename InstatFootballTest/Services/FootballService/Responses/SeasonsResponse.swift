@@ -13,9 +13,9 @@ struct SeasonsResponse: Decodable {
 }
 
 struct DataType: Decodable {
-    let name: String
+    let name: String?
     let desc: String
-    let abbreviation: String
+    let abbreviation: String?
     let seasons: [Season]
 }
 

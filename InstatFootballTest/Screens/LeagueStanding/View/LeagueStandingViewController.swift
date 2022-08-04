@@ -1,5 +1,5 @@
 //
-//  SeasonsViewController.swift
+//  LeagueStandingViewController.swift
 //  InstatFootballTest
 //
 //  Created by Zhassulan Aimukhambetov on 04.08.2022.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SeasonsViewProtocol: AnyObject {
+protocol LeagueStandingViewProtocol: AnyObject {
     func updateView()
     func updateView(isLoading: Bool)
     func updateView(withError error: Error)
 }
 
-final class SeasonsViewController: UIViewController {
+final class LeagueStandingViewController: UIViewController {
     private lazy var loader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView(style: .large)
         loader.center = view.center
@@ -26,13 +26,13 @@ final class SeasonsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.register(SeasonCell.self)
+        tableView.register(LeagueStandingCell.self)
         return tableView
     }()
     
-    private let presenter: SeasonsPresenterProtocol
+    private let presenter: LeagueStandingPresenterProtocol
     
-    init(presenter: SeasonsPresenterProtocol, title: String) {
+    init(presenter: LeagueStandingPresenterProtocol, title: String) {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
@@ -57,7 +57,7 @@ final class SeasonsViewController: UIViewController {
     }
 }
 
-extension SeasonsViewController: SeasonsViewProtocol {
+extension LeagueStandingViewController: LeagueStandingViewProtocol {
     func updateView() {
         tableView.reloadData()
     }
@@ -79,19 +79,15 @@ extension SeasonsViewController: SeasonsViewProtocol {
 }
 
 
-extension SeasonsViewController: UITableViewDataSource, UITableViewDelegate {
+extension LeagueStandingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SeasonCell = tableView.dequeueCell(for: indexPath)
+        let cell: LeagueStandingCell = tableView.dequeueCell(for: indexPath)
         cell.configure(with: presenter.model(for: indexPath))
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = MainFactory.leagueStandingVC(for: presenter.model(for: indexPath))
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
+

@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    func showRepeatScreen(_ repeatCompletion: (() -> Void)?) {
+    func showRepeatScreen(withCancelButton: Bool = false, _ repeatCompletion: (() -> Void)?) {
         let alert = UIAlertController(title: "Ошибка",
                                       message: "Что-то пошло не так...",
                                       preferredStyle: .alert)
@@ -17,7 +17,13 @@ extension UIViewController {
             repeatCompletion?()
         }
                 
-        alert.addAction(repeatAction)        
+        alert.addAction(repeatAction)
+        
+        if withCancelButton {
+            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+            alert.addAction(cancelAction)
+        }
+        
         present(alert, animated: true)
     }
 }

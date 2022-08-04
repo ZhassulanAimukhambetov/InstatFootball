@@ -30,11 +30,13 @@ final class Network: NetworkService {
         
         let task = session.dataTask(with: request) { data, response, error in
             if let _ = error {
+                print(error as Any)
                 completion(.failure(.taskError))
                 return
             }
             
             guard let response = response as? HTTPURLResponse, case (200...299) = response.statusCode else {
+                print(response as Any)
                 completion(.failure(.responseError))
                 return
             }

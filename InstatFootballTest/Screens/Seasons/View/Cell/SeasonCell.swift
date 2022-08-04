@@ -78,8 +78,8 @@ final class SeasonCell: UITableViewCell {
             yearLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             yearLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
             
-            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             separator.heightAnchor.constraint(equalToConstant: 1),
             separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])

@@ -31,4 +31,12 @@ enum MainFactory {
         
         return view
     }
+    
+    static func leagueStandingVC(for season: SeasonModel) -> UIViewController {
+        let presenter = LeagueStandingPresenter(service: footbalService, leagueId: season.leagueId, season: season.yearText)
+        let view = LeagueStandingViewController(presenter: presenter, title: season.nameText)
+        presenter.view = view
+        
+        return view
+    }
 }

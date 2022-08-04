@@ -9,6 +9,7 @@ import Foundation
 
 struct SeasonModel {
     let season: Season
+    let leagueId: String
     
     var yearText: String {
         "\(season.year)"

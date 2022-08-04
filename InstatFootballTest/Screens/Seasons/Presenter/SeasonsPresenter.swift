@@ -45,6 +45,6 @@ final class SeasonsPresenter: SeasonsPresenterProtocol {
     }
     
     func model(for indexPath: IndexPath) -> SeasonModel {
-        SeasonModel(season: seasons[indexPath.row])
+        SeasonModel(season: seasons[indexPath.row], leagueId: leagueId)
     }
 }

@@ -46,16 +46,10 @@ extension UIImageView {
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             self?.currentTask = nil
-            if let error = error {
-                if (error as? URLError)?.code == .cancelled {
-                    return
-                }
 
-                print(error)
-                return
-            }
-
-            guard let data = data, let downloadedImage = UIImage(data: data) else {
+            guard error == nil,
+                  let data = data,
+                  let downloadedImage = UIImage(data: data) else {
                 return
             }
 
@@ -91,7 +85,9 @@ extension UIImageView {
         }
 
         deinit {
-            NotificationCenter.default.removeObserver(observer!)
+            if let observer = observer {
+                NotificationCenter.default.removeObserver(observer)
+            }
         }
 
         func image(forKey key: String) -> UIImage? {

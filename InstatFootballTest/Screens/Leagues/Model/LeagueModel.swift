@@ -23,4 +23,8 @@ struct LeagueModel {
     var logoURL: String? {
         league.logos.light
     }
+    
+    var placeholderName: String {
+        "league_placeholder"
+    }
 }

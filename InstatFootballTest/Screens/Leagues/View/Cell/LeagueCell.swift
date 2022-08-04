@@ -49,7 +49,7 @@ final class LeagueCell: UITableViewCell {
     func configure(with model: LeagueModel) {
         nameLabel.text = model.nameText
         abbrLabel.text = model.abbrText
-        logoImageView.setImage(with: model.logoURL, placeholder: .strokedCheckmark)
+        logoImageView.setImage(with: model.logoURL, placeholder: UIImage(named: model.placeholderName))
     }
     
     private func setupView() {
